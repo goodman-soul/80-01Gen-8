@@ -13,7 +13,7 @@ import type {
   ClubStatistics,
   ReimbursementApplication,
   ApplicationStatus,
-} from "../../../shared/types";
+} from "@shared/types";
 import { useAuthStore } from "@/store/auth";
 import { apiRequest, formatMoney, formatDate } from "@/utils/api";
 import StatusBadge from "@/components/StatusBadge";

@@ -1,4 +1,4 @@
-import type { ApiResponse } from "../../shared/types";
+import type { ApiResponse } from "@shared/types";
 
 const API_BASE = "/api";
 

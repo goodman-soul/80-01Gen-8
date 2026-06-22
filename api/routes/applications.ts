@@ -42,7 +42,7 @@ router.get(
   "/:id",
   authMiddleware,
   (req: Request, res: Response<ApiResponse<ReimbursementApplication>>): void => {
-    const app = findApplicationById(req.params.id);
+    const app = findApplicationById(req.params.id as string);
     if (!app) {
       res.status(404).json({ success: false, message: "申请不存在" });
       return;
@@ -85,7 +85,7 @@ router.put(
     req: Request,
     res: Response<ApiResponse<ReimbursementApplication>>,
   ): void => {
-    const result = updateApplication(req.user!, req.params.id, req.body);
+    const result = updateApplication(req.user!, req.params.id as string, req.body);
     if (!result.success) {
       res.status(400).json({ success: false, message: result.message });
       return;
@@ -99,11 +99,11 @@ router.post(
   authMiddleware,
   requireRoles("teacher"),
   (
-    req: Request<unknown, unknown, TeacherReviewRequest>,
+    req: Request,
     res: Response<ApiResponse<ReimbursementApplication>>,
   ): void => {
-    const { approved, rejectReason } = req.body;
-    const result = teacherReview(req.user!, req.params.id, approved, rejectReason);
+    const { approved, rejectReason } = req.body as TeacherReviewRequest;
+    const result = teacherReview(req.user!, req.params.id as string, approved, rejectReason);
     if (!result.success) {
       res.status(400).json({ success: false, message: result.message });
       return;
@@ -117,13 +117,13 @@ router.post(
   authMiddleware,
   requireRoles("finance"),
   (
-    req: Request<unknown, unknown, FinanceReviewRequest>,
+    req: Request,
     res: Response<ApiResponse<ReimbursementApplication>>,
   ): void => {
-    const { approved, rejectReason, markPaid } = req.body;
+    const { approved, rejectReason, markPaid } = req.body as FinanceReviewRequest;
     const result = financeReview(
       req.user!,
-      req.params.id,
+      req.params.id as string,
       approved,
       markPaid ?? false,
       rejectReason,
@@ -144,7 +144,7 @@ router.post(
     req: Request,
     res: Response<ApiResponse<ReimbursementApplication>>,
   ): void => {
-    const result = resubmitApplication(req.user!, req.params.id);
+    const result = resubmitApplication(req.user!, req.params.id as string);
     if (!result.success) {
       res.status(400).json({ success: false, message: result.message });
       return;

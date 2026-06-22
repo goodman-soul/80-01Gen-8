@@ -1,4 +1,4 @@
-import type { ApplicationStatus, STATUS_LABELS } from "../../shared/types";
+import type { ApplicationStatus } from "@shared/types";
 
 interface Props {
   status: ApplicationStatus;

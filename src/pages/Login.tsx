@@ -8,7 +8,7 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
-import type { UserRole } from "../../../shared/types";
+import type { UserRole } from "@shared/types";
 import { useAuthStore } from "@/store/auth";
 import { useToast } from "@/components/Toast";
 import { apiRequest } from "@/utils/api";

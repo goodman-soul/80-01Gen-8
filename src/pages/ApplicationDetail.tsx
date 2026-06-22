@@ -15,7 +15,7 @@ import {
   RefreshCw,
   MessageSquare,
 } from "lucide-react";
-import type { ReimbursementApplication, Club } from "../../../shared/types";
+import type { ReimbursementApplication, Club } from "@shared/types";
 import { useAuthStore } from "@/store/auth";
 import { apiRequest, formatMoney, formatDate, formatDateTime } from "@/utils/api";
 import { useToast } from "@/components/Toast";
@@ -167,17 +167,17 @@ export default function ApplicationDetail() {
   const FilePreview = ({
     files,
     title,
-    icon,
+    Icon,
     color,
   }: {
     files: { id: string; name: string; url: string }[];
     title: string;
-    icon: typeof FileSpreadsheet;
+    Icon: typeof FileSpreadsheet;
     color: string;
   }) => (
     <div>
       <h3 className="font-medium text-slate-800 mb-3 flex items-center gap-2">
-        <icon className={`w-4 h-4 ${color}`} />
+        <Icon className={`w-4 h-4 ${color}`} />
         {title} ({files.length})
       </h3>
       {files.length === 0 ? (
@@ -353,7 +353,7 @@ export default function ApplicationDetail() {
             <FilePreview
               files={app.budgetFiles}
               title="预算文件"
-              icon={FileSpreadsheet}
+              Icon={FileSpreadsheet}
               color="text-primary-600"
             />
             <div>
@@ -403,7 +403,7 @@ export default function ApplicationDetail() {
             <FilePreview
               files={app.paymentFiles}
               title="付款截图"
-              icon={CreditCard}
+              Icon={CreditCard}
               color="text-success-600"
             />
           </div>

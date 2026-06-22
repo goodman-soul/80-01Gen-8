@@ -13,7 +13,7 @@ import {
   Info,
   Plus,
 } from "lucide-react";
-import type { CreateApplicationRequest, UploadedFile, Invoice } from "../../../shared/types";
+import type { CreateApplicationRequest, UploadedFile, Invoice } from "@shared/types";
 import { useAuthStore } from "@/store/auth";
 import { apiRequest } from "@/utils/api";
 import { useToast } from "@/components/Toast";
@@ -171,12 +171,12 @@ export default function NewApplication() {
   const FileList = ({
     files,
     onRemove,
-    icon,
+    Icon,
     color,
   }: {
     files: UploadedFile[];
     onRemove: (id: string) => void;
-    icon: typeof FileSpreadsheet;
+    Icon: typeof FileSpreadsheet;
     color: string;
   }) => (
     <div className="space-y-2">
@@ -188,7 +188,7 @@ export default function NewApplication() {
           <div
             className={`w-10 h-10 rounded-lg ${color} flex items-center justify-center text-white flex-shrink-0`}
           >
-            <icon className="w-5 h-5" />
+            <Icon className="w-5 h-5" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-slate-800 truncate">
@@ -306,7 +306,7 @@ export default function NewApplication() {
           <FileList
             files={budgetFiles}
             onRemove={(id) => removeFile(id, setBudgetFiles)}
-            icon={FileSpreadsheet}
+            Icon={FileSpreadsheet}
             color="bg-gradient-to-br from-blue-500 to-primary-600"
           />
           <button
@@ -421,7 +421,7 @@ export default function NewApplication() {
           <FileList
             files={paymentFiles}
             onRemove={(id) => removeFile(id, setPaymentFiles)}
-            icon={CreditCard}
+            Icon={CreditCard}
             color="bg-gradient-to-br from-emerald-500 to-success-600"
           />
           <button

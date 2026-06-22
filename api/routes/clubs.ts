@@ -31,7 +31,7 @@ router.get(
   "/:id",
   authMiddleware,
   (req: Request, res: Response<ApiResponse<Club>>): void => {
-    const club = findClubById(req.params.id);
+    const club = findClubById(req.params.id as string);
     if (!club) {
       res.status(404).json({ success: false, message: "社团不存在" });
       return;
@@ -54,7 +54,7 @@ router.get(
   "/:id/statistics",
   authMiddleware,
   (req: Request, res: Response<ApiResponse<ClubStatistics>>): void => {
-    const club = findClubById(req.params.id);
+    const club = findClubById(req.params.id as string);
     if (!club) {
       res.status(404).json({ success: false, message: "社团不存在" });
       return;
